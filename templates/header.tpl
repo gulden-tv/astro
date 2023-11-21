@@ -15,7 +15,7 @@
     Укажите свой API-ключ. Тестовый ключ НЕ БУДЕТ работать на других сайтах.
     Получить ключ можно в Кабинете разработчика: https://developer.tech.yandex.ru/keys/
 -->
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=43b5c1a9-d40c-4957-8b18-522508db9bbf" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=c32e1cd8-61e8-4027-8f5f-d6ba9a2262ae&lang=ru_RU" type="text/javascript"></script>
     <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
     <script src="/groups" type="text/javascript"></script>
 

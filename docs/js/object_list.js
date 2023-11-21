@@ -53,7 +53,11 @@ function init() {
 //        var submenuItem = $('<li><a href="#">' + item.name + '</a> <button id="' + item.center + '" value="' + item.center + '">filter here ' + item.center + '</button></li>'),
         var submenuItem = $('<li><i class="bi bi-geo-alt"></i> <a href="#">' + item.name + '</a></li>'),
             // Создаем метку.
-            placemark = new ymaps.Placemark(item.center, { balloonContent: item.name });
+            placemark = new ymaps.Placemark( item.center, {
+                balloonContentHeader: item.name,
+                balloonContentBody: item.start + ' - ' + item.end, 
+                balloonContentFooter: item.footer + ' <a class="ymaps-2-1-79-balloon-content__footer" href="/location/' + item.id + '" target="_blank">Подробнее</a>' ,
+            });
 
         // Добавляем метку в коллекцию.
         collection.add(placemark);

@@ -22,14 +22,22 @@ class Map extends SQLite3 {
      */
     function getMapJsEntries() {
         try {
-            $r = $this->query("SELECT title as name, gps as center, comment as footer, description as body FROM location");
+            $r = $this->query("SELECT id, title as name, gps as center, comment as body, 
+                    CASE 
+		                WHEN LENGTH(description) > 150 THEN 
+			                substr(description,1,150) || '...' 
+		                ELSE 
+                            description 
+		                END footer,
+                    start, end FROM location");
             $locations[0]['name'] = "Астрономические явления";
             $locations[0]['style'] = "islands#blueIcon";
             $locations[0]['items'] = [];
             $i = 0;
             while($row = $r->fetchArray(SQLITE3_ASSOC)) {
-                $gps = explode(",", $row['center']);
+                $locations[0]['items'][$i] = $row;
                 if($row['center'] != NULL ) {
+                    $gps = explode(",", $row['center']);
                     $locations[0]['items'][$i]['center'] = [(float)$gps[0], (float)$gps[1]];
                 } else {
                     $locations[0]['items'][$i]['center'] = [55.755864, 37.617698]; // Moscow

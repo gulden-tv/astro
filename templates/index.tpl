@@ -31,16 +31,16 @@
     <!-- Two -->
     <section id="two" class="wrapper style2 spotlights">
         <div class="inner">
-            <h2>Астрономические события 2023 года:</h2>
+            <h2>Астрономические события:</h2>
         </div>
 
 {foreach $locations as $location}
         <section>
             <div class="content">
                 <div class="inner">
-                    <h3>{$location.start}</h3>
+                    <h3>{$location.start} {$location.end}</h3>
                     <h2>{$location.title}</h2>
-                    <p>{$location.description}</p>
+                    <p>{$location.comment}</p>
                     <ul class="actions">
                         <li><a href="/location/{$location.id}" class="button">Подробнее</a></li>
                     </ul>
@@ -49,59 +49,6 @@
         </section>
 {/foreach}
 
-        <section>
-            <div class="content">
-                <div class="inner">
-                    <h3>25 апреля 2023</h3>
-                    <h2>Солнечное затмение</h2>
-                    <p>Какой-то текст.</p>
-                    <ul class="actions">
-                        <li><a href="generic.html" class="button">Подробнее</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="content">
-                <div class="inner">
-                    <h3>24 августа 2023</h3>
-                    <h2>Созвездие девы</h2>
-                    <p>Какой-то текст</p>
-                    <ul class="actions">
-                        <li><a href="generic.html" class="button">Подробнее</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <div class="inner">
-            <h2>Астрономические события 2024 года:</h2>
-        </div>
-        <section>
-            <div class="content">
-                <div class="inner">
-                    <h3>24 августа 2024</h3>
-                    <h2>Созвездие девы</h2>
-                    <p>Какой-то текст</p>
-                    <ul class="actions">
-                        <li><a href="generic.html" class="button">Подробнее</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="content">
-                <div class="inner">
-                    <h3>23-24 декабря 2024</h3>
-                    <h2>Метеоритный дождь</h2>
-                    <p>Какой-то текст</p>
-                    <ul class="actions">
-                        <li><a href="generic.html" class="button">Подробнее</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
         <!-- Footer -->
         <footer id="footer" class="wrapper style1-alt">
