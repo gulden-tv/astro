@@ -22,14 +22,7 @@ class Map extends SQLite3 {
      */
     function getMapJsEntries() {
         try {
-            $r = $this->query("SELECT id, title as name, gps as center, comment as body, 
-                    CASE 
-		                WHEN LENGTH(description) > 150 THEN 
-			                substr(description,1,150) || '...' 
-		                ELSE 
-                            description 
-		                END footer,
-                    start, end FROM location");
+            $r = $this->query("SELECT id, title as name, gps as center, comment as footer, description as body, start, end FROM location");
             $locations[0]['name'] = "Астрономические явления";
             $locations[0]['style'] = "islands#blueIcon";
             $locations[0]['items'] = [];
@@ -56,7 +49,7 @@ class Map extends SQLite3 {
      */
     function countLocations() {
         try {
-            $sql = "SELECT count(*) FROM location";
+            $sql = "SELECT  count(DISTINCT parenid) FROM location";
             $r = $this->querySingle($sql);
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage();
@@ -70,7 +63,7 @@ class Map extends SQLite3 {
      */
     function getAllLocations() {
         try {
-            $sql = "SELECT id, title, gps, description, comment, start, end FROM location";
+            $sql = "SELECT * FROM location GROUP BY parenid ORDER BY start";
             $r = $this->query($sql);
             $ret = [];
             while ($row = $r->fetchArray(SQLITE3_ASSOC))
@@ -80,5 +73,23 @@ class Map extends SQLite3 {
             return false;
         }
         return $ret;
+    }
+
+     /**
+     * Get location by id
+     */
+    public function getLocationById($id) {
+        try {
+            $stmt = $this->prepare("SELECT * FROM location WHERE id = :id;");
+            $stmt->bindValue(":id", $id);
+            $r = $stmt->execute();
+            $ret = [];
+            while ($row = $r->fetchArray(SQLITE3_ASSOC))
+                $ret[] = $row;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage();
+            return false;
+        }
+        return $ret[0] ?? NULL;
     }
 }

@@ -14,6 +14,9 @@ if(isset($_GET) && isset($_GET['q'])) {
         if( $_GET['q'] == "groups" ) {
             $map = new Map();
             $smarty->assign('points', $map->getMapJsEntries());
+        } elseif( $_GET['q'] == "location" ) {
+            $map = new Map();
+            $smarty->assign('location', $map->getLocationById($_GET['id']));
         }
         $smarty->display($_GET['q'].".tpl");
     }
@@ -26,3 +29,4 @@ if(isset($_GET) && isset($_GET['q'])) {
     $smarty->display('index.tpl');
 }
 
+// print_r($_GET);

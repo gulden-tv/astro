@@ -5,10 +5,15 @@ RewriteBase /
 
 RewriteEngine On
 
-#RewriteCond %{HTTP_HOST} ^regmedmap\.ru [NC]
+#RewriteCond %{HTTP_HOST} ^astro\.gulden\.tv [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([a-zA-Z0-9_-]+)$ /index.php?q=$1 [QSA]
+RewriteRule ^location/([0-9]+)$ /index.php?q=location&id=$1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+)$ /index.php?q=$1&%{QUERY_STRING} [QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R=301]
+

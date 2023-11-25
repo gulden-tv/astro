@@ -1,9 +1,9 @@
-{include file="header.tpl" title=foo}
+{include file="header.tpl.inc" title=foo}
 
 <body class="is-preload">
 
 <!-- Sidebar -->
-{include file="menu.tpl" title=foo}
+{include file="menu.tpl.inc" title=foo}
 
 <!-- Wrapper -->
 <div id="wrapper">
@@ -12,7 +12,6 @@
     <section id="intro" class="wrapper style1 fullscreen fade-up">
         <div class="inner">
             <h1>Карта астрономических явлений</h1>
-            <p>Всего акттивных событий - {$count}</p>
             <p>Здесь вы можете узнать не только даты различных астрономических событий, таких как лунное затмение, метеоритные дожди и многое другое, но и различные факты про них.</p>
         </div>
     </section>
@@ -22,8 +21,8 @@
         <div class="inner">
             <h2>Карта событий</h2>
             <p> На карте вы сможете в каких городах и в какое время видны астрономические события .</p>
-            <div class="features">
-                <div id="map"></div>
+            <div class="features" >
+                <div id="map" style="width: 100%;"></div>
             </div>
         </div>
     </section>
@@ -32,13 +31,14 @@
     <section id="two" class="wrapper style2 spotlights">
         <div class="inner">
             <h2>Астрономические события:</h2>
+            <p>Всего акттивных событий - {$count}</p>
         </div>
 
 {foreach $locations as $location}
         <section>
             <div class="content">
                 <div class="inner">
-                    <h3>{$location.start} {$location.end}</h3>
+                    <h3> С {$location.start|date_format: "%d-%m-%Y %H:%M"} по {$location.end|date_format: "%d-%m-%Y %H:%M"}</h3>
                     <h2>{$location.title}</h2>
                     <p>{$location.comment}</p>
                     <ul class="actions">
@@ -70,4 +70,4 @@
 
 </body>
 
-{include file="footer.tpl"}
+{include file="footer.tpl.inc"}

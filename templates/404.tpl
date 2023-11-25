@@ -1,4 +1,4 @@
-{include file="header.tpl" title=foo}
+{include file="header.tpl.inc" title=foo}
 
 <main id="main">
 
@@ -21,4 +21,4 @@
 
 </main><!-- End #main -->
 
-{include file="footer.tpl"}
+{include file="footer.tpl.inc"}
